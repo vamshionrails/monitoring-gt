@@ -113,7 +113,7 @@
 
 - name: add sentinel init config file
   template:
-    dest: /etc/sysconfig/sentinel_{{ redis_sentinel_port }}
+    dest: /data/redis/etc/sentinel_{{ redis_sentinel_port }}
     src: redis.init.conf.j2
   when: ansible_os_family == "RedHat"
   notify: "restart sentinel {{ redis_sentinel_port }}"

@@ -135,3 +135,4 @@
     name: "{{ redis_service_name }}"
     state: started
   when: redis_as_service
+  tags: start_redis

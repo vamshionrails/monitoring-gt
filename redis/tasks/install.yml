@@ -25,6 +25,7 @@
     state: directory
   with_items:
     - /data/redis
+    - /data/redis/logs
     - /data/redis/etc
     - /data/redis/etc/redis
     - /data/redis/etc/tmpfiles.d
