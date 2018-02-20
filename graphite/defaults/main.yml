@@ -1,7 +1,7 @@
 ---
-graphite_carbon_version: "0.9.13-pre1"
-graphite_whisper_version: "0.9.13-pre1"
-graphite_web_version: "0.9.13-pre1"
+graphite_carbon_version: "master"
+graphite_whisper_version: "master"
+graphite_web_version: "master"
 
 graphite_home: "/data/graphite"
 

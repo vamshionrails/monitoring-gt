@@ -13,15 +13,35 @@ rabbitmq_plugins:
 rabbitmq_plugins_disabled: []
 
 rabbitmq_users:
+
 - user: admin
   password: admin
   tags: administrator
+  configure_priv: ".*"
+  read_priv: ".*"
+  vhost: "/"
+  write_priv: ".*"
+
+- user: sensu
+  password: sensu
+  tags: administrator
+  configure_priv: ".*"
+  read_priv: ".*"
+  vhost: "/sensu"
+  write_priv: ".*"
 
 rabbitmq_users_absent:
 - guest
 
 rabbitmq_version: 3.6.6-1
 
-rabbitmq_vhosts: []
+#rabbitmq_vhosts: []
+
+rabbitmq_vhosts:
+- name: /
+- name: /sensu
+  node: rabbit
+  tracing: yes
+
 
 rabbitmq_vhosts_absent: []
