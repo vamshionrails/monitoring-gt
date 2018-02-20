@@ -35,7 +35,6 @@ rabbitmq_users_absent:
 
 rabbitmq_version: 3.6.6-1
 
-#rabbitmq_vhosts: []
 
 rabbitmq_vhosts:
 - name: /
