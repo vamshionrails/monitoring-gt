@@ -1,0 +1,46 @@
+# Supported OS families.
+supported_os_families:
+  - RedHat
+
+# package
+sensu_package: "../files/sensu-1.2.0-1.el7.x86_64.rpm"
+
+# install
+sensu_install: false
+
+# client
+sensu_config_path: /etc/sensu
+sensu_client: true
+sensu_user_name: sensu
+sensu_group_name: sensu
+sensu_startup_config: sensu.service.j2
+sensu_client_config: client.json.j2
+sensu_client_subscriptions: "{{ group_names }}"
+sensu_client_name: "{{ ansible_hostname }}"
+sensu_client_service_name: sensu-client
+
+#server and api
+
+sensu_server_config: sensu-api.json.j2
+sensu_server_redis_config: sensu-redis.json.j2
+sensu_server_rabbitmq_config: rabbitmq.json.j2
+sensu_server_service_name: sensu-server
+
+sensu_api_host: "0.0.0.0"
+sensu_api_port: 4567
+sensu_api_ssl: "false"
+sensu_api_user_name: admin
+sensu_api_password: secret
+sensu_api_uchiwa_path: ''
+sensu_api_timeout: 5000
+sensu_master: false
+
+#Redis
+redis_host: "0.0.0.0"
+redis_server: true
+redis_service_name: redis
+redis_port: 6379
+redis_password:
+redis_sentinels: []
+redis_master_name:
+sensu_redis_config: sensu-redis.json.j2

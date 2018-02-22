@@ -1,0 +1,10 @@
+---
+  - include: "{{ role_path }}/tasks/client.yml"
+    tags: sensu-client
+    when: sensu_client
+    
+  - include: "{{ role_path }}/tasks/server.yml"
+    tags: sensu-server
+    when: sensu_server
+  
+  

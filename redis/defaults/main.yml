@@ -1,12 +1,15 @@
 ---
 ## Installation options
-#redis_version: 2.8.24
-redis_version: stable
+redis_install: true
+redis_version: 4.0.8
+
 redis_install_dir: /data/redis
 #redis_dir: /var/lib/redis/{{ redis_port }}
 redis_dir: /data/redis/{{ redis_port }}
 #redis_download_url: "http://download.redis.io/releases/redis-{{ redis_version }}.tar.gz"
-redis_download_url: "https://s3-us-west-2.amazonaws.com/vamshi-production-yum/x86_64/redis-{{ redis_version }}.tar.gz"
+
+redis_version_file: redis-4.0.8.tar.gz
+
 # Set this to true to validate redis tarball checksum against vars/main.yml
 redis_verify_checksum: false
 # Set this value to a local path of a tarball to use for installation instead of downloading

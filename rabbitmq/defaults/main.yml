@@ -1,4 +1,11 @@
 ---
+
+erlang_install: true
+rabbitmq_install: true
+
+erlang_version: erlang-20.2.3-1.el7.centos.x86_64.rpm
+rabbitmq_version: rabbitmq-server-3.7.3-1.el7.noarch.rpm
+
 rabbitmq_cluster: False
 
 rabbitmq_cluster_master: "rabbit@{{ hostvars[ansible_play_hosts.0].ansible_hostname }}"

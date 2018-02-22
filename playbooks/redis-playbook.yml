@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: dqa
   become: yes
   vars:
     - redis_bind: 127.0.0.1

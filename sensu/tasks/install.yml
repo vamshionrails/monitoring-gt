@@ -1,0 +1,20 @@
+
+# Install sensu
+---
+
+- name: Copy rpm file to server
+  copy:
+     src: "{{ sensu_package }}"
+     dest: /tmp/{{ sensu_package }}
+  when: ansible_os_family == 'RedHat' and sensu_install
+  tags: install
+
+- name: Install sensu package.
+  yum:
+     name: "/tmp/{{ sensu_package }}"
+     state: present
+  when: ansible_os_family == 'RedHat' and sensu_install
+  tags: install
+  
+
+  

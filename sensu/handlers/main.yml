@@ -1,0 +1,14 @@
+# Handlers for sensu
+---
+
+- name: restart sensu-client
+  service: name=sensu-client state=restarted
+  tags: sensu-client
+  
+- name: restart sensu-server
+  service: name=sensu-server state=restarted
+  tags: sensu-server
+  
+- name: restart sensu-api
+  service: name=sensu-api state=restarted
+  tags: sensu-api
