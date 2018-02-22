@@ -1,16 +1,15 @@
 # Install uchiwa
 ---
 
-- name: Install uchiwa on Debian systems
-  apt:
-    name="{{ uchiwa_apt_pkg }}{{'=' + version if not version in ['installed','latest'] else '' }}"
-    state={{ 'latest' if version == 'latest' else 'present' }}
-    update_cache=yes
-    force=yes
-  when: ansible_os_family == 'Debian'
-
-- name: Install uchiwa on RedHat systems
-  yum:
-    name="{{ uchiwa_yum_pkg }}{{'-' + version if not version in ['installed','latest'] else '' }}"
-    state={{ 'latest' if version == 'latest' else 'present' }}
+- name: Copy rpm file to server
+  copy:
+     src: ../files/uchiwa-1.1.2-1.el7.x86_64.rpm
+     dest: /tmp/uchiwa-1.1.2-1.el7.x86_64.rpm
   when: ansible_os_family == 'RedHat'
+
+- name: Install uchiwa package.
+  yum:
+     name: /tmp/uchiwa-1.1.2-1.el7.x86_64.rpm
+     state: present
+  when: ansible_os_family == 'RedHat'
+  

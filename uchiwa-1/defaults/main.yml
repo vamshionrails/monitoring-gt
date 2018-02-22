@@ -6,7 +6,7 @@ supported_os_families:
   - RedHat
 
 # Install or not the sensu repo.
-install_repo: true
+install_repo: false
 
 # The sensu YUM repo params
 # 'sensu': installs the stable sensu repo
