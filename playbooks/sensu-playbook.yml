@@ -1,0 +1,5 @@
+---
+- hosts: dqa
+  become: yes
+  roles:
+    - sensu
