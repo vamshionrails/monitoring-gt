@@ -1,7 +1,10 @@
 ---
-- hosts: localhost
-#  become: yes
-  vars:
-    - redis_bind: 127.0.0.1
+- hosts: dqa
+  become: yes
   roles:
-    - graphite
+    - graphite/centos
+    - graphite/apache
+    - graphite/graphite
+  environment:
+    http_proxy: http://proxy.sla.getthere.net:80
+    https_proxy: http://proxy.sla.getthere.net:80

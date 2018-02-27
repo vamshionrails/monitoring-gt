@@ -1,3 +1,0 @@
----
-- name: Restart Carbon
-  service: name=carbon-cache state=restarted

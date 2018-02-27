@@ -3,3 +3,6 @@
   become: yes
   roles:
     - sensu
+  environment:
+    http_proxy: http://proxy.sla.getthere.net:80
+    https_proxy: http://proxy.sla.getthere.net:80

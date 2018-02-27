@@ -1,0 +1,39 @@
+#!/bin/bash
+#
+# This script will install ansible including sshpass for --ask-pass functionality
+# under cygwin.
+# Before running this install cygwin and select lynx package to be install.
+#
+# Script Starts Here
+#
+#
+# fetch apt-cyg via lynx
+lynx -source rawgit.com/transcode-open/apt-cyg/master/apt-cyg > apt-cyg
+# install apt-cyg
+install apt-cyg /bin
+# Install wget
+apt-cyg install wget;
+apt-cyg install autoconf automake binutils cygport curl gmp libgmp-devel make python python-devel python-crypto python-openssl python-setuptools git nano openssh openssl openssl-devel libffi-devel gcc-core gcc-g++;
+# Install pip for python 2.7
+python -m ensurepip;
+# Install pip packages
+pip install ansible molecule;
+# Install sshpass for cygwin
+git clone https://github.com/Edgar0119/cygwin-sshpass.git cygwin-sshpass
+cd cygwin-sshpass/
+tar -zxvf sshpass-1.05.tar.gz
+cd sshpass-1.05
+./configure
+make
+make install
+
+mkdir -p /etc/ansible
+cd /etc/ansible
+wget https://raw.githubusercontent.com/ansible/ansible/devel/examples/ansible.cfg -O ansible.cfg
+ansible -m lineinfile -a 'dest=/etc/ansible/ansible.cfg regexp="^# ?ssh_args = " backrefs=yes line="ssh_args = -o ControlMaster=No -o ForwardAgent=yes -o ControlPersist=30m"' localhost
+ansible -m lineinfile -a 'dest=/etc/ansible/ansible.cfg regexp="^# ?host_key_checking = " backrefs=yes line="host_key_checking = False"' localhost
+ansible -m lineinfile -a 'dest=/etc/ansible/ansible.cfg regexp="^# ?system_warnings = " backrefs=yes line="system_warnings = False"' localhost
+ansible -m lineinfile -a 'dest=/etc/ansible/ansible.cfg regexp="^# ?command_warnings = " backrefs=yes line="command_warnings = False"' localhost
+ansible -m lineinfile -a 'dest=/etc/ansible/ansible.cfg regexp="^# ?deprecation_warnings = " backrefs=yes line="deprecation_warnings = True"' localhost
+
+cd ~

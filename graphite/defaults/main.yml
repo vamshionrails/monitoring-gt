@@ -1,9 +1,0 @@
----
-graphite_carbon_version: "master"
-graphite_whisper_version: "master"
-graphite_web_version: "master"
-
-graphite_home: "/data/graphite"
-
-graphite_web_port: 8080
-graphite_web_secret_key: "SECRET"

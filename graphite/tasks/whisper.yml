@@ -1,6 +1,0 @@
----
-- name: Install Whisper
-  command: "python setup.py install"
-  args:
-    chdir: /tmp/whisper
-    creates: /tmp/data/graphite/bin/whisper-create.py

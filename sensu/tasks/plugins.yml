@@ -1,0 +1,3 @@
+- name: Install sensu plugins.
+  gem: name=sensu-plugins-disk-checks version=0.0.1 state=present executable=/opt/sensu/embedded/bin/gem      
+  tags: plugins

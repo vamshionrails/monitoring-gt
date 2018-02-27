@@ -11,3 +11,6 @@
 
 # Configure uchiwa
 - include: config.yml
+
+# Configure plugins
+- include: plugins.yml

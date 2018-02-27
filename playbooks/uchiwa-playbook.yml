@@ -2,4 +2,4 @@
 - hosts: dqa
   become: yes
   roles:
-    - uchiwa-1
+    - uchiwa
