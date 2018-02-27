@@ -1,0 +1,40 @@
+# {{ ansible_managed }}
+
+SECRET_KEY = '{{ graphite_secret_key }}'
+ALLOWED_HOSTS = [ '*' ]
+
+TIME_ZONE = 'US/Central'
+
+LOG_RENDERING_PERFORMANCE = False
+LOG_CACHE_PERFORMANCE = False
+LOG_METRIC_ACCESS = False
+
+DEBUG = False
+
+GRAPHITE_ROOT = '/opt/graphite'
+GRAPHITE_DATA = '/opt/graphite/storage'
+CONF_DIR = GRAPHITE_ROOT+'/conf'
+STORAGE_DIR = GRAPHITE_DATA
+CONTENT_DIR = GRAPHITE_ROOT+'/webapp/content'
+
+DASHBOARD_CONF = GRAPHITE_ROOT+'/conf/dashboard.conf'
+GRAPHTEMPLATES_CONF = GRAPHITE_ROOT+'/conf/graphTemplates.conf'
+
+WHISPER_DIR = GRAPHITE_DATA+'/whisper'
+RRD_DIR = GRAPHITE_DATA+'/rrd'
+DATA_DIRS = [WHISPER_DIR, RRD_DIR] # Default: set from the above variables
+LOG_DIR = GRAPHITE_DATA+'/log'
+INDEX_FILE = GRAPHITE_DATA+'/index'  # Search index file
+
+DATABASES = {
+    'default': {
+        'NAME': GRAPHITE_DATA+'/graphite.db',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': ''
+    }
+}
+
+CARBONLINK_HOSTS = ["127.0.0.1:7002:a", "127.0.0.1:7102:b"]

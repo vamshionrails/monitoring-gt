@@ -1,0 +1,26 @@
+---
+- name: Copy EPEL Repository file to server
+  copy:
+     src: "../files/epel-release-7-11.noarch.rpm"
+     dest: /tmp/epel-release-7-11.noarch.rpm
+  when: ansible_os_family == 'RedHat'
+  
+- name: Install EPEL repository package.
+  yum:
+     name: "/tmp/epel-release-7-11.noarch.rpm"
+     state: present
+  when: ansible_os_family == 'RedHat'
+  tags: install
+
+- name: Install Development Tools
+  yum: name="@Development tools" state=present
+
+- name: Install Python PIP and Python Development
+  yum: "name={{ item }} state=installed"
+  with_items:
+   - python-pip
+   - python-devel
+   - nc
+
+
+
